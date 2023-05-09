@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>“计算机组成原理” | 枫叶苑</title><meta name="author" content="1+1"><meta name="copyright" content="1+1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第二章位，字节，字： 解释： 位&#x3D;比特&#x3D;bit   ： 信息的最小单位，等于0或1 字节 &#x3D; byte    ：可以表示一个英文字母，数字或者符号 字 &#x3D; word ： 描述计算机一次性处理事务的固定长度 说明： 1 byte &#x3D; 8 bit   大小相当于2^8 &#x3D;256 在说字长和字之前，需要说明在多少位操作系统的环境下 1 word">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“计算机组成原理”">
+<meta property="og:url" content="http://obliviate-debug.github.io/2023/05/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="枫叶苑">
+<meta property="og:description" content="第二章位，字节，字： 解释： 位&#x3D;比特&#x3D;bit   ： 信息的最小单位，等于0或1 字节 &#x3D; byte    ：可以表示一个英文字母，数字或者符号 字 &#x3D; word ： 描述计算机一次性处理事务的固定长度 说明： 1 byte &#x3D; 8 bit   大小相当于2^8 &#x3D;256 在说字长和字之前，需要说明在多少位操作系统的环境下 1 word">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://obliviate-debug.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-05-09T09:53:08.000Z">
+<meta property="article:modified_time" content="2023-05-09T09:57:54.495Z">
+<meta property="article:author" content="1+1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://obliviate-debug.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://obliviate-debug.github.io/2023/05/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '“计算机组成原理”',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-09 17:57:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-sitemap"></i><span> 站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="fa-fw fa fa-paper-plane"></i><span> 我的导航</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.aqcoder.cn"><i class="fa-fw fa fa-heartbeat"></i><span> 站点状态</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-bookmark"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/share/"><i class="fa-fw fa fa-share-alt-square"></i><span> 分享</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://news.cyol.com/gb/channels/vrGlAKDl/index.html"><i class="fa-fw fa fa-train"></i><span> 开往</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><i class="fa-fw fa fa-circle"></i><span> 虫洞</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="枫叶苑"><span class="site-name">枫叶苑</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-sitemap"></i><span> 站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="fa-fw fa fa-paper-plane"></i><span> 我的导航</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.aqcoder.cn"><i class="fa-fw fa fa-heartbeat"></i><span> 站点状态</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-bookmark"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/share/"><i class="fa-fw fa fa-share-alt-square"></i><span> 分享</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://news.cyol.com/gb/channels/vrGlAKDl/index.html"><i class="fa-fw fa fa-train"></i><span> 开往</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><i class="fa-fw fa fa-circle"></i><span> 虫洞</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">“计算机组成原理”</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-09T09:53:08.000Z" title="发表于 2023-05-09 17:53:08">2023-05-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-09T09:57:54.495Z" title="更新于 2023-05-09 17:57:54">2023-05-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="“计算机组成原理”"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>位，字节，字：</p>
+<p><strong>解释：</strong></p>
+<p>位&#x3D;比特&#x3D;bit   ： 信息的最小单位，等于0或1</p>
+<p>字节 &#x3D; byte    ：可以表示一个英文字母，数字或者符号</p>
+<p>字 &#x3D; word ： <u>描述计算机一次性处理事务的固定长度</u></p>
+<p><strong>说明：</strong></p>
+<p>1 byte &#x3D; 8 bit   大小相当于2^8 &#x3D;256</p>
+<p><u>在说字长和字之前，需要说明在多少位操作系统的环境下</u></p>
+<p>1 word &#x3D; 16 bit			[16位操作系统下]</p>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><h3 id="移码表示"><a href="#移码表示" class="headerlink" title="移码表示"></a>移码表示</h3><p>通常用于表示浮点数的阶码</p>
+<p>移码和补码的符号位相反</p>
+<p><strong>表示的范围</strong>：8位移码 00000000-11111111</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>1.可以直观的判断两个数据大小</p>
+<p>2.阶码全为0时，浮点数下溢</p>
+<img src="计算机组成原理\image-20230509150403228.png" alt="image-20230509150403228" style="zoom:50%;" />
+
+<h3 id="浮点数表示："><a href="#浮点数表示：" class="headerlink" title="浮点数表示："></a>浮点数表示：</h3><p>一般表示形式</p>
+<img src="计算机组成原理\image-20230509150651108.png" alt="image-20230509150651108" style="zoom:50%;" />
+
+
+
+<h1 id="第五章CPU"><a href="#第五章CPU" class="headerlink" title="第五章CPU"></a>第五章CPU</h1><p><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%5Cimage-20230509151251388.png" alt="image-20230509151251388"></p>
+<h2 id="5-1CPU的功能和组成"><a href="#5-1CPU的功能和组成" class="headerlink" title="5.1	CPU的功能和组成"></a>5.1	CPU的功能和组成</h2><h3 id="主要寄存器"><a href="#主要寄存器" class="headerlink" title="主要寄存器"></a>主要寄存器</h3><h4 id="1-DR（数据缓冲寄存器）"><a href="#1-DR（数据缓冲寄存器）" class="headerlink" title="1.DR（数据缓冲寄存器）"></a>1.DR（数据缓冲寄存器）</h4><p>暂时存放运算器与外界传送的数据</p>
+<h4 id="2-通用寄存器"><a href="#2-通用寄存器" class="headerlink" title="2.通用寄存器"></a>2.通用寄存器</h4><p>暂时存放ALU运算的数据或结果</p>
+<h4 id="3-PSW（状态条件寄存器）"><a href="#3-PSW（状态条件寄存器）" class="headerlink" title="3.PSW（状态条件寄存器）"></a>3.PSW（状态条件寄存器）</h4><p>C：进位标志</p>
+<p>V：溢出标志</p>
+<p>Z：零标志</p>
+<p>W：符号标志</p>
+<h4 id="4-AR（数据地址寄存器）"><a href="#4-AR（数据地址寄存器）" class="headerlink" title="4.AR（数据地址寄存器）"></a>4.AR（数据地址寄存器）</h4><p>保存当前CPU所访问数据的内存单元地址</p>
+<h4 id="5-PC（程序计数器）"><a href="#5-PC（程序计数器）" class="headerlink" title="5.PC（程序计数器）"></a>5.PC（程序计数器）</h4><p>始终存放下一条指令的地址，对应于指令Cache的访问</p>
+<h4 id="6-IR（指令寄存器）"><a href="#6-IR（指令寄存器）" class="headerlink" title="6.IR（指令寄存器）"></a>6.IR（指令寄存器）</h4><p>保存当前正在执行的一条指令</p>
+<p>其对应的操作码字段直接作为指令译码器的输入</p>
+<h3 id="操作控制器与时序产生器"><a href="#操作控制器与时序产生器" class="headerlink" title="操作控制器与时序产生器"></a>操作控制器与时序产生器</h3><p><strong>数据通路</strong>：两个部件之间传送信息的通路</p>
+<h4 id="操作控制器"><a href="#操作控制器" class="headerlink" title="操作控制器"></a>操作控制器</h4><p>根据指令操作码和时序信号，产生各种操作控制信号；</p>
+<p>建立正确的数据通路，从而完成指令的执行</p>
+<h4 id="分类（根据设计方法）"><a href="#分类（根据设计方法）" class="headerlink" title="分类（根据设计方法）"></a>分类（根据设计方法）</h4><p>1.硬布线控制器：采用时序逻辑技术实现</p>
+<p>2.微程序控制器：采用存储逻辑实现</p>
+<p>3.两种方式的结合</p>
+<h2 id="5-2指令周期"><a href="#5-2指令周期" class="headerlink" title="5.2	指令周期"></a>5.2	指令周期</h2><h3 id="指令周期的基本概念"><a href="#指令周期的基本概念" class="headerlink" title="指令周期的基本概念"></a>指令周期的基本概念</h3><p>CPU执行程序是一个“取指令—执行指令” 的循环过程</p>
+<p>对于一个指令周期来说，我们取出一条指令，然后执行它，至少需要两个 CPU 周期。取出指令至少需要一个 CPU 周期，执行至少也需要一个 CPU 周期，复杂的指令则需要更多的 CPU 周期。</p>
+<h4 id="指令周期"><a href="#指令周期" class="headerlink" title="指令周期"></a>指令周期</h4><p>CPU从内存中取出一条指令，并执行完毕的时间总和</p>
+<h4 id="CPU周期"><a href="#CPU周期" class="headerlink" title="CPU周期"></a>CPU周期</h4><p>又称为机器周期，一般为从内存读取一条指令字的最短时间</p>
+<p>一条指令执行过程被划分为若干阶段（比如取指、译码、执行等），每一阶段完成所需时间。一般情况下一个CPU周期是若干时钟周期之和。</p>
+<h4 id="时钟周期"><a href="#时钟周期" class="headerlink" title="时钟周期"></a>时钟周期</h4><p>也叫做节拍脉冲或T周期，是计算机工作的基本时间单位</p>
+<h4 id="MOV-R0-R1-指令的指令周期"><a href="#MOV-R0-R1-指令的指令周期" class="headerlink" title="MOV R0,R1 指令的指令周期"></a>MOV R0,R1 指令的指令周期</h4><p>它需要两个CPU周期</p>
+<h5 id="取指周期"><a href="#取指周期" class="headerlink" title="取指周期"></a>取指周期</h5><p>1.PC–&gt;ABUS(地址总线)–&gt;指令Cache，译码并启动   <strong>PC读，指令Cache启动</strong></p>
+<p>2.指令Cache–&gt;IR    <strong>指令Cache读，IR写</strong></p>
+<p>3.PC+1–&gt;PC，为下条指令做准备  <strong>PC增加</strong></p>
+<p>4.IR中的操作码被译码或测试，CPU识别出是指令MOV</p>
+<h5 id="执行指令周期"><a href="#执行指令周期" class="headerlink" title="执行指令周期"></a>执行指令周期</h5><p>1.R1–&gt;ALU ，R1中数据通过ALU传送    <strong>R1读，ALU传送控制</strong></p>
+<p>2.ALU–&gt;DBUS（<strong>地址总线</strong>）–&gt;DR–&gt;R0  <strong>ALU输出，DR锁存，R0写</strong></p>
+<h4 id="LAD-R1-6-指令周期"><a href="#LAD-R1-6-指令周期" class="headerlink" title="LAD R1,6 指令周期"></a>LAD R1,6 指令周期</h4><h5 id="取指周期-1"><a href="#取指周期-1" class="headerlink" title="取指周期"></a>取指周期</h5><p>与MOV一致</p>
+<h5 id="执行周期"><a href="#执行周期" class="headerlink" title="执行周期"></a>执行周期</h5><p>IR–&gt;DBUS–&gt;AR  I<strong>R读，AR锁存</strong></p>
+<p>AR–&gt;ABUS–&gt;数据Cache，译码并启动    <strong>数据Cache启动</strong></p>
+<p>数据Cache –&gt;DBUS–&gt;DR–&gt;R1  <strong>数据Cache读，DR锁存，R1写</strong></p>
+<p>  执行周期需要两个CPU周期的原因：源操作数的地址和源操作数都需要经过DBUS传送</p>
+<h4 id="ADD-R1-R2指令周期"><a href="#ADD-R1-R2指令周期" class="headerlink" title="ADD R1,R2指令周期"></a>ADD R1,R2指令周期</h4><h5 id="取指周期-2"><a href="#取指周期-2" class="headerlink" title="取指周期"></a>取指周期</h5><p>同MOV</p>
+<h5 id="执行周期-1"><a href="#执行周期-1" class="headerlink" title="执行周期"></a>执行周期</h5><p>R1、R2 –&gt; ALU  <strong>R1,R2读</strong></p>
+<p>ALU做加运算，将两数相加  <strong>ALU加</strong></p>
+<p>ALU –&gt;DBUS –&gt;DR –&gt;R2 <strong>ALU输出，DR锁存，R2写</strong></p>
+<h4 id="STO-R2-R3-指令周期"><a href="#STO-R2-R3-指令周期" class="headerlink" title="STO R2 ,(R3)指令周期"></a>STO R2 ,(R3)指令周期</h4><h5 id="取指周期-3"><a href="#取指周期-3" class="headerlink" title="取指周期"></a>取指周期</h5><p>同MOV</p>
+<h5 id="执行周期-2"><a href="#执行周期-2" class="headerlink" title="执行周期"></a>执行周期</h5><p>R3 –&gt;DBUS–&gt;AR 发出地址启动数据Cache <strong>R3读，AR锁存</strong></p>
+<p>   该过程为间址周期</p>
+<p>R2 –&gt; DBUS –&gt;数据Cache <strong>R2读，数据Cache写</strong></p>
+<h4 id="方框语言表示指令周期"><a href="#方框语言表示指令周期" class="headerlink" title="方框语言表示指令周期"></a>方框语言表示指令周期</h4><p>1.方框</p>
+<p>代表一个CPU周期</p>
+<p>2.菱形</p>
+<p>通常用来表示某种判别或测试</p>
+<p>3.~</p>
+<p>表示一条指令已经执行完毕，转入公操作</p>
+<p><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%5Cimage-20230509171154445.png" alt="image-20230509171154445"></p>
+<h2 id="5-3时序产生器和控制方式"><a href="#5-3时序产生器和控制方式" class="headerlink" title="5.3	时序产生器和控制方式"></a>5.3	时序产生器和控制方式</h2><h2 id="5-4微程序控制器"><a href="#5-4微程序控制器" class="headerlink" title="5.4	微程序控制器"></a>5.4	微程序控制器</h2><h2 id="5-5硬连线控制器"><a href="#5-5硬连线控制器" class="headerlink" title="5.5	硬连线控制器"></a>5.5	硬连线控制器</h2><h2 id="5-6流水CPU"><a href="#5-6流水CPU" class="headerlink" title="5.6	流水CPU"></a>5.6	流水CPU</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://Obliviate-debug.github.io">1+1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://obliviate-debug.github.io/2023/05/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">http://obliviate-debug.github.io/2023/05/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://Obliviate-debug.github.io" target="_blank">枫叶苑</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/07/Blog/" title="博客美化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">博客美化</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">1+1</div><div class="author-info__description">随心</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Obliviate-debug"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">数据格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text">移码表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">优点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">浮点数表示：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0CPU"><span class="toc-number">2.</span> <span class="toc-text">第五章CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1CPU%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E7%BB%84%E6%88%90"><span class="toc-number">2.1.</span> <span class="toc-text">5.1	CPU的功能和组成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">主要寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-DR%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BC%93%E5%86%B2%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">1.DR（数据缓冲寄存器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">2.通用寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-PSW%EF%BC%88%E7%8A%B6%E6%80%81%E6%9D%A1%E4%BB%B6%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">3.PSW（状态条件寄存器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-AR%EF%BC%88%E6%95%B0%E6%8D%AE%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.4.</span> <span class="toc-text">4.AR（数据地址寄存器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-PC%EF%BC%88%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.5.</span> <span class="toc-text">5.PC（程序计数器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-IR%EF%BC%88%E6%8C%87%E4%BB%A4%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.6.</span> <span class="toc-text">6.IR（指令寄存器）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%8E%A7%E5%88%B6%E5%99%A8%E4%B8%8E%E6%97%B6%E5%BA%8F%E4%BA%A7%E7%94%9F%E5%99%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">操作控制器与时序产生器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">操作控制器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%EF%BC%88%E6%A0%B9%E6%8D%AE%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">分类（根据设计方法）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.</span> <span class="toc-text">5.2	指令周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.2.1.</span> <span class="toc-text">指令周期的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">指令周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">CPU周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.3.</span> <span class="toc-text">时钟周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MOV-R0-R1-%E6%8C%87%E4%BB%A4%E7%9A%84%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.4.</span> <span class="toc-text">MOV R0,R1 指令的指令周期</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%96%E6%8C%87%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.4.1.</span> <span class="toc-text">取指周期</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.4.2.</span> <span class="toc-text">执行指令周期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LAD-R1-6-%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.5.</span> <span class="toc-text">LAD R1,6 指令周期</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%96%E6%8C%87%E5%91%A8%E6%9C%9F-1"><span class="toc-number">2.2.1.5.1.</span> <span class="toc-text">取指周期</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.5.2.</span> <span class="toc-text">执行周期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ADD-R1-R2%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.6.</span> <span class="toc-text">ADD R1,R2指令周期</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%96%E6%8C%87%E5%91%A8%E6%9C%9F-2"><span class="toc-number">2.2.1.6.1.</span> <span class="toc-text">取指周期</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F-1"><span class="toc-number">2.2.1.6.2.</span> <span class="toc-text">执行周期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#STO-R2-R3-%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.7.</span> <span class="toc-text">STO R2 ,(R3)指令周期</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%96%E6%8C%87%E5%91%A8%E6%9C%9F-3"><span class="toc-number">2.2.1.7.1.</span> <span class="toc-text">取指周期</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F-2"><span class="toc-number">2.2.1.7.2.</span> <span class="toc-text">执行周期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%86%E8%AF%AD%E8%A8%80%E8%A1%A8%E7%A4%BA%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="toc-number">2.2.1.8.</span> <span class="toc-text">方框语言表示指令周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E6%97%B6%E5%BA%8F%E4%BA%A7%E7%94%9F%E5%99%A8%E5%92%8C%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">5.3	时序产生器和控制方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">5.4	微程序控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5%E7%A1%AC%E8%BF%9E%E7%BA%BF%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text">5.5	硬连线控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6%E6%B5%81%E6%B0%B4CPU"><span class="toc-number">2.6.</span> <span class="toc-text">5.6	流水CPU</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" title="“计算机组成原理”">“计算机组成原理”</a><time datetime="2023-05-09T09:53:08.000Z" title="发表于 2023-05-09 17:53:08">2023-05-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/07/Blog/" title="博客美化">博客美化</a><time datetime="2023-05-06T16:56:22.000Z" title="发表于 2023-05-07 00:56:22">2023-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/04/hello-world/" title="Hello World">Hello World</a><time datetime="2023-05-04T15:36:07.713Z" title="发表于 2023-05-04 23:36:07">2023-05-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 1+1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
