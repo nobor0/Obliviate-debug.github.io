@@ -21,7 +21,7 @@
       <link href="/2023/05/07/Blog/"/>
       <url>/2023/05/07/Blog/</url>
       
-        <content type="html"><![CDATA[<h2 id="添加评论（valien）"><a href="#添加评论（valien）" class="headerlink" title="添加评论（valien）"></a>添加评论（valien）</h2><p>1.创建<a href="https://www.leancloud.cn/">LeanCloud</a>账号，用国内版的，但是你的域名要备案，如果没有备案的话下面就不用看了，原本国际版是可以用的但是现在好像不能了。</p><p>2.创建应用，随便输入名称</p><p><img src="/Blog%5Cimage1.png" alt="image1"></p><p>3.点击设置，在应用凭证那里有AppID 和 AppKey 复制下来留着用</p><p>4.更改配置，在_config.butterfly.yml文件里找到comments修改</p><p><img src="/Blog%5Cimage2.png" alt="image2"></p><p>然后再在该文件下找valine，修改</p><p><img src="/Blog%5Cimage3.png" alt="image3"></p><p>之后再hexo三部曲。</p><p>最后，我自己没弄好评论，我的域名没有备案，我原本是想用leanCloud的国际版的，但是也不行，搜了发现国际版不支持了。so就先这样</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="添加评论（valien）"><a href="#添加评论（valien）" class="headerlink" title="添加评论（valien）"></a>添加评论（valien）</h2><p>1.创建<a href="https://www.leancloud.cn/">LeanCloud</a>账号，用国内版的，但是你的域名要备案，如果没有备案的话下面就不用看了，原本国际版是可以用的但是现在好像不能了。</p><p>2.创建应用，随便输入名称</p><p><img src="/image1.png" alt="image1"></p><p>3.点击设置，在应用凭证那里有AppID 和 AppKey 复制下来留着用</p><p>4.更改配置，在_config.butterfly.yml文件里找到comments修改</p><p><img src="/image2.png" alt="image2"></p><p>然后再在该文件下找valine，修改</p><p><img src="/Blog%5Cimage3.png" alt="image3"></p><p>之后再hexo三部曲。</p><p>最后，我自己没弄好评论，我的域名没有备案，我原本是想用leanCloud的国际版的，但是也不行，搜了发现国际版不支持了。so就先这样</p>]]></content>
       
       
       
