@@ -3834,7 +3834,7 @@ h1.page-title + .tag-cloud-list {
   -ms-transform: translate(100%, 0);
   transform: translate(100%, 0);
 }
-#loading-box {
+loading-box {
   position: fixed;
   z-index: 1000;
   display: -webkit-box;
@@ -3876,7 +3876,7 @@ h1.page-title + .tag-cloud-list {
   height: 100vh;
   overflow: hidden;
 }
-#loading-box.loaded .wizard-scene {
+loading-box.loaded .wizard-scene {
   display: none;
 }
 .wizard-scene {
