@@ -3793,24 +3793,24 @@ h1.page-title + .tag-cloud-list {
   width: 100%;
 }
 .loading-bg,
-#loading-box .loading-left-bg,
-#loading-box .loading-right-bg {
+loading-box .loading-left-bg,
+loading-box .loading-right-bg {
   position: fixed;
   z-index: 1000;
   width: 50%;
   height: 100%;
   background: var(--preloader-bg);
 }
-#loading-box .loading-left-bg {
+loading-box .loading-left-bg {
   left: 0;
 }
-#loading-box .loading-right-bg {
+loading-box .loading-right-bg {
   right: 0;
 }
-#loading-box.loaded {
+loading-box.loaded {
   z-index: -1000;
 }
-#loading-box.loaded .loading-left-bg {
+loading-box.loaded .loading-left-bg {
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s;
@@ -3822,7 +3822,7 @@ h1.page-title + .tag-cloud-list {
   -ms-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
 }
-#loading-box.loaded .loading-right-bg {
+loading-box.loaded .loading-right-bg {
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s;
