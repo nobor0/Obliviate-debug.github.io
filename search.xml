@@ -8,7 +8,7 @@
       <link href="/2023/05/26/Reverse%E4%B9%8B%E8%B7%AF/"/>
       <url>/2023/05/26/Reverse%E4%B9%8B%E8%B7%AF/</url>
       
-        <content type="html"><![CDATA[<h1 id="BUU"><a href="#BUU" class="headerlink" title="BUU"></a>BUU</h1><h2 id="easyre-2023-5-26"><a href="#easyre-2023-5-26" class="headerlink" title="easyre(2023.5.26)"></a>easyre(2023.5.26)</h2><p>日常查壳：</p><p>用PEiD查壳，然而显示的不是有效的PE文件，<strong>PEiD只支持检测32位的可执行文件</strong>，如果显示不是有效的[PE文件，说明你的可执行文件为64位，不能用PEiD检测</p><p><img src="image1.png" alt="image1"></p><p>下面使用Exeinfo PE查看，Exeinfo相当于PEiD的升级版，可查看64位的可执行文件</p><p><img src="image2.png" alt="image2"></p><p>然后用ide64打开，直接Shift+F12查看字符串，直接看到flag，提交正确</p><p><img src="image3.png" alt="image3"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="BUU"><a href="#BUU" class="headerlink" title="BUU"></a>BUU</h1><h2 id="2023-5-26"><a href="#2023-5-26" class="headerlink" title="(2023.5.26)"></a>(2023.5.26)</h2><h3 id="easyre"><a href="#easyre" class="headerlink" title="easyre"></a>easyre</h3><p>日常查壳：</p><p>用PEiD查壳，然而显示的不是有效的PE文件，<strong>PEiD只支持检测32位的可执行文件</strong>，如果显示不是有效的[PE文件，说明你的可执行文件为64位，不能用PEiD检测</p><p><img src="image1.png" alt="image1"></p><p>下面使用Exeinfo PE查看，Exeinfo相当于PEiD的升级版，可查看64位的可执行文件</p><p><img src="image2.png" alt="image2"></p><p>然后用ide64打开，直接Shift+F12查看字符串，直接看到flag，提交正确</p><p><img src="image3.png" alt="image3"></p><h3 id="reverse1"><a href="#reverse1" class="headerlink" title="reverse1"></a>reverse1</h3><p>日常查壳（Exeinfo PE）</p><p><img src="image4.png" alt="image4"></p>]]></content>
       
       
       
