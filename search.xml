@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>docker</title>
+      <link href="/2023/10/24/docker/"/>
+      <url>/2023/10/24/docker/</url>
+      
+        <content type="html"><![CDATA[<h1 id="了解docker"><a href="#了解docker" class="headerlink" title="了解docker"></a>了解docker</h1><p><strong>容器</strong>基本上是一个具有足够隔离用户空间组件的进程</p><p>Docker 基本上就是一个容器引擎，它使用 Linux 内核功能（如命名空间和控制组）在操作系统之上创建容器。</p><p>例如，如果有一个 Java jar 文件，我们可以在任何安装了 java 的服务器上运行它。同样的，一旦使用 Docker 将容器与所需的应用程序打包在一起，我们就可以在任何其他安装了 Docker 的主机上运行它。</p><h2 id="Docker-与容器的区别"><a href="#Docker-与容器的区别" class="headerlink" title="Docker 与容器的区别"></a>Docker 与容器的区别</h2><p>Docker 是一种为高效管理容器而开发的一种技术或工具。</p><p>我可以在没有 Docker 的情况下运行容器吗？</p><p>当然可以。我们可以使用 LXC 技术在 Linux 服务器上运行容器。</p><p>关于 Docker，我们应该要清楚：</p><ul><li>Docker 不是 LXC</li><li>Docker 不是虚拟机解决方案。</li><li>Docker 不是配置管理系统，也不是chef, puppet, Ansible 等工具的替代品。</li><li>Docker 不是一种平台即服务的技术。</li></ul><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>Docker 有一个高效的工作流程，可以将应用程序从开发环境转移到测试环境、再转移到生产环境。当我们在实际完成将应用程序打包到 Docker 映像的一个操作时，会对它有更深的了解。</p><p>启动 docker 容器非常快速，只需不到一秒钟，而且 Docker 可以在任何具有兼容 Linux 内核的主机上运行。（也支持 Windows）</p><p><em><strong>注意：我们不能在 Linux 主机上运行 Windows 容器，因为 Windows 没有 Linux 内核支持。点击<a href="https://link.zhihu.com/?target=https://docs.microsoft.com/en-us/virtualization/windowscontainers/about">此处</a>，可以阅读有关 Windows 容器的信息。</strong></em></p><p>Docker 使用<a href="https://link.zhihu.com/?target=https://en.wikipedia.org/wiki/UnionFS">写时复制联合文件系统</a>（ Copy-on-write union file system ）来存储图像。每当对容器进行更改时，只会使用写时复制模型将更改写入磁盘。使用写时复制，我们优化了所有容器的共享存储层。</p><h2 id="Docker组件"><a href="#Docker组件" class="headerlink" title="Docker组件"></a>Docker组件</h2><p>Docker 由以下几个组件组成：</p><ul><li>Docker 守护进程 (dockerd)</li><li>Docker 客户端</li><li>Docker 镜像</li><li>Docker 注册表</li><li>Docker 容器</li></ul><h2 id="为什么容器比虚拟机好？"><a href="#为什么容器比虚拟机好？" class="headerlink" title="为什么容器比虚拟机好？"></a>为什么容器比虚拟机好？</h2><p>与虚拟机相比，容器具有一些重要优势，接下来让我们来一一看看这些优势。</p><p><strong>资源利用和成本</strong></p><ul><li>我们可以使用虚拟机独立运行应用程序，这里所谓的独立运行是指一台虚拟器运行一个服务。但是虚拟机仍然可能未被充分利用。此外，为应用程序调整虚拟机的大小并不是一件容易的事。</li><li>另一方面，容器可以在非常小的 CPU 和内存上运行。此外，您甚至可以在 VM 内运行多个容器以进行应用程序隔离。另外，调整容器大小需要几秒钟。</li></ul><p><strong>配置和部署</strong></p><ul><li>取决于所涉及的工作流，配置虚拟机并在其上<a href="https://link.zhihu.com/?target=https://devopscube.com/release-management-explained/">部署应用程序</a>可能需要几分钟到几小时的时间，即使回滚也需要时间。</li><li>但是我们却可以在几秒钟内部署一个容器，并在几秒钟内将其回滚。</li></ul><p><strong>漂移管理</strong></p><ul><li>虚拟机中的漂移管理并不容易。我们需要拥有成熟的<a href="https://link.zhihu.com/?target=https://devopscube.com/devops-tools-for-infrastructure-automation/">自动化</a>和流程，以确保所有环境都相似。遵循不可变的部署模型可避免虚拟机环境中的漂移。</li><li>对于容器，一旦镜像生成，那么它在所有环境中都是一样的。要进行任何更改时，我们需要开始在 dev env 中进行更改并重新生成容器映像。</li></ul><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul><li><strong>镜像（Image）</strong>：Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。</li><li><strong>容器（Container）</strong>：镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</li><li><strong>仓库（Repository）</strong>：仓库可看成一个代码控制中心，用来保存镜像。</li></ul><p>镜像是静态的，容器是动态。一个镜像可以运行多个容器</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/2023/10/21/web%E6%B5%8B%E8%AF%95/"/>
       <url>/2023/10/21/web%E6%B5%8B%E8%AF%95/</url>
