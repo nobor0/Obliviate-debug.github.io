@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SQL | 子非鱼</title><meta name="author" content="nobor"><meta name="copyright" content="nobor"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据库操作基本操作123456789101112131415161718192021222324252627sudo service mysql start  #启动mysqlmysql -u root			#登录show databases;   #查看数据库（命令结尾带&amp;#x27;;&amp;#x27;）CREATE DATABASE mysql_shiyan; #创建数据库DROP DATABASE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL">
+<meta property="og:url" content="http://obliviate-debug.github.io/2023/10/26/SQL/index.html">
+<meta property="og:site_name" content="子非鱼">
+<meta property="og:description" content="数据库操作基本操作123456789101112131415161718192021222324252627sudo service mysql start  #启动mysqlmysql -u root			#登录show databases;   #查看数据库（命令结尾带&amp;#x27;;&amp;#x27;）CREATE DATABASE mysql_shiyan; #创建数据库DROP DATABASE">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://obliviate-debug.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-10-26T01:33:48.000Z">
+<meta property="article:modified_time" content="2023-10-26T01:34:33.491Z">
+<meta property="article:author" content="nobor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://obliviate-debug.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://obliviate-debug.github.io/2023/10/26/SQL/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SQL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-26 09:34:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><script async="async">    var preloader = {
+      endLoading: () => {
+        document.body.style.overflow = 'auto';
+        document.getElementById('loading-box').classList.add("loaded")
+      },
+      initLoading: () => {
+        document.body.style.overflow = '';
+        document.getElementById('loading-box').classList.remove("loaded")
+
+      }
+    }
+    window.addEventListener('load',()=> {preloader.endLoading()})
+    setTimeout(function(){preloader.endLoading();}, 5000);
+
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();}, 5000);
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/xlenco/JS-X@main/pace.js/pace.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-sitemap"></i><span> 站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="fa-fw fa fa-paper-plane"></i><span> 我的导航</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.aqcoder.cn"><i class="fa-fw fa fa-heartbeat"></i><span> 站点状态</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-bookmark"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/share/"><i class="fa-fw fa fa-share-alt-square"></i><span> 分享</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://news.cyol.com/gb/channels/vrGlAKDl/index.html"><i class="fa-fw fa fa-train"></i><span> 开往</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><i class="fa-fw fa fa-circle"></i><span> 虫洞</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="子非鱼"><span class="site-name">子非鱼</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-sitemap"></i><span> 站点</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="fa-fw fa fa-paper-plane"></i><span> 我的导航</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://status.aqcoder.cn"><i class="fa-fw fa fa-heartbeat"></i><span> 站点状态</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-bookmark"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/share/"><i class="fa-fw fa fa-share-alt-square"></i><span> 分享</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-images"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://news.cyol.com/gb/channels/vrGlAKDl/index.html"><i class="fa-fw fa fa-train"></i><span> 开往</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html"><i class="fa-fw fa fa-circle"></i><span> 虫洞</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-26T01:33:48.000Z" title="发表于 2023-10-26 09:33:48">2023-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-26T01:34:33.491Z" title="更新于 2023-10-26 09:34:33">2023-10-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SQL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start  #启动mysql</span><br><span class="line"></span><br><span class="line">mysql -u root			#登录</span><br><span class="line"></span><br><span class="line">show databases;   #查看数据库（命令结尾带&#x27;;&#x27;）</span><br><span class="line"></span><br><span class="line">CREATE DATABASE mysql_shiyan; #创建数据库</span><br><span class="line">DROP DATABASE mysql_shiyan;#删除数据库</span><br><span class="line"></span><br><span class="line">use mysql_shiyan; #连接某一数据库</span><br><span class="line"></span><br><span class="line">show tables;#查看表</span><br><span class="line"></span><br><span class="line">#新建表</span><br><span class="line">CREATE TABLE 表的名字</span><br><span class="line">(列名a 数据类型(数据长度),</span><br><span class="line"> 列名b 数据类型(数据长度),</span><br><span class="line"> 列名c 数据类型(数据长度)</span><br><span class="line">);</span><br><span class="line">#例子：primary key 设置为主键：唯一标识，不为空</span><br><span class="line">create table book(</span><br><span class="line">  book_id int primary key,</span><br><span class="line">  book_name varchar(50) not null</span><br><span class="line">);</span><br><span class="line">#删除表</span><br><span class="line">drop table 表的名字；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20231020162305745.png" alt="image-20231020162305745"></p>
+<p><img src="/images/image-20231020162445163.png" alt="image-20231020162445163"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from employee;#查看表</span><br><span class="line"></span><br><span class="line">#向表插入数据</span><br><span class="line">insert into 表的名字(列名a,列名b,列名c)</span><br><span class="line">values(值1，值2，值3)；</span><br></pre></td></tr></table></figure>
+
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>通常有：</p>
+<p>primary key :主键</p>
+<p>default 默认 </p>
+<p>unique 唯一</p>
+<p>foreign key 外键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#外键，表达的形式</span><br><span class="line">CREATE TABLE mark(</span><br><span class="line">    mid int NOT NULL AUTO_INCREMENT,</span><br><span class="line">    sid int NOT NULL,</span><br><span class="line">    cid int NOT NULL,</span><br><span class="line">    score int NOT NULL,</span><br><span class="line">    PRIMARY KEY(mid),</span><br><span class="line">    FOREIGN KEY(sid) REFERENCES student(sid),</span><br><span class="line">    FOREIGN KEY(cid) REFERENCES course(cid)</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+
+<p>NOT NULL 非空</p>
+<h2 id="导入SQL语句"><a href="#导入SQL语句" class="headerlink" title="导入SQL语句"></a>导入SQL语句</h2><p>这个命令的含义是在 MySQL 数据库中运行一个 SQL 脚本文件。让我来解释一下每部分的含义：</p>
+<ul>
+<li><p>**<code>source</code>**：这是 MySQL 命令行客户端提供的一个指令，它用于读取并执行一个 SQL 脚本文件。使用 <code>source</code> 命令，你可以在 MySQL 命令行中运行一个 SQL 脚本，而不必逐行输入 SQL 语句。</p>
+</li>
+<li><p>**<code>/home/shiyanlou/Desktop/MySQL-03-01.sql</code>**：这是一个文件路径，指定了要运行的 SQL 脚本文件的位置。在这个例子中，<code>MySQL-03-01.sql</code> 文件位于 <code>shiyanlou</code> 用户的桌面（Desktop）目录下。</p>
+</li>
+</ul>
+<p>当你在 MySQL 命令行中输入 <code>source /home/shiyanlou/Desktop/MySQL-03-01.sql;</code> 后，MySQL 服务器会读取指定路径上的 <code>MySQL-03-01.sql</code> 文件，并将其中的 SQL 语句逐行执行。这样可以一次性批量导入大量的 SQL 语句，例如创建表、插入数据、定义索引等。</p>
+<p>请注意，<code>source</code> 命令通常在 MySQL 命令行中执行，确保在运行该命令之前已经登录到了 MySQL 数据库，并且具有足够的权限来执行脚本中的 SQL 语句。</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#SELECT 要查询的列名 FROM 表名字 WHERE 限制条件;</span><br><span class="line">SELECT name,age FROM employee;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>**1)**SELECT 语句常常会有 WHERE 限制条件，用于达到更加精确的查询。WHERE 限制条件可以有数学符号 (<code>=,&lt;,&gt;,&gt;=,&lt;=</code>) ，刚才我们查询了 name 和 age，现在稍作修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT name,age FROM employee WHERE age&gt;25;</span><br><span class="line"></span><br><span class="line">SELECT name,age,phone FROM employee WHERE name=&#x27;Mary&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>**2)**WHERE 后面可以有不止一条限制，而根据条件之间的逻辑关系，可以用 [<code>条件一 OR 条件二</code>] 和 [<code>条件一 AND 条件二</code>] 连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT name,age FROM employee WHERE age&lt;25 OR age&gt;30;</span><br><span class="line">#筛选出 age 大于 25，且 age 小于 30</span><br><span class="line">SELECT name,age FROM employee WHERE age&gt;25 AND age&lt;30;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>而刚才的限制条件 age&gt;25 AND age&lt;30 ，如果需要包含 25 和 30 这两个数字的话，可以替换为 <strong>age BETWEEN 25 AND 30</strong> ：</p>
+<p><strong>3)<strong>关键词 <strong>IN</strong> 和 <strong>NOT IN</strong> 的作用和它们的名字一样明显，用于筛选</strong>“在”</strong>或<strong>“不在”</strong>某个范围内的结果，比如说我们要查询在 <strong>dpt3</strong> 或 <strong>dpt4</strong> 的人:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt IN (&#x27;dpt3&#x27;,&#x27;dpt4&#x27;);</span><br><span class="line">#而 NOT IN 的效果则是，如下面这条命令，查询出了不在 dpt1 也不在 dpt3 的人：</span><br><span class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt NOT IN (&#x27;dpt1&#x27;,&#x27;dpt3&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>**4)**关键字 <strong>LIKE</strong> 可用于实现模糊查询，常见于搜索功能中。</p>
+<p>和 LIKE 联用的通常还有通配符，代表未知字符。SQL 中的通配符是 <code>_</code> 和 <code>%</code> 。其中 <code>_</code> 代表一个未指定字符，<code>%</code> 代表<strong>不定个</strong>未指定字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查找出了 1101 开头的 6 位数电话号码</span><br><span class="line">SELECT name,age,phone FROM employee WHERE phone LIKE &#x27;1101__&#x27;;</span><br><span class="line">#查找出了首字母为 J 的人：</span><br><span class="line">SELECT name,age,phone FROM employee WHERE name LIKE &#x27;J%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5)<strong>为了使查询结果看起来更顺眼，我们可能需要对结果按某一列来排序，这就要用到 <strong>ORDER BY</strong> 排序关键词。默认情况下，</strong>ORDER BY</strong> 的结果是<strong>升序</strong>排列，而使用关键词 <strong>ASC</strong> 和 <strong>DESC</strong> 可指定<strong>升序</strong>或<strong>降序</strong>排序。 比如，我们<strong>按 salary 降序排列</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT name,age,salary,phone FROM employee ORDER BY salary DESC;</span><br></pre></td></tr></table></figure>
+
+<p>**6)**SQL 允许对表中的数据进行计算。对此，SQL 有 5 个内置函数</p>
+<p><img src="/images/image-20231021212816941.png" alt="image-20231021212816941"></p>
+<p>具体举例，比如计算出 salary 的最大、最小值，用这样的一条语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(salary) AS max_salary,MIN(salary) FROM employee;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用 AS 关键词可以给值重命名</strong>，比如最大值被命名为了 max_salary：</p>
+<p><img src="/images/image-20231021213028961.png" alt="image-20231021213028961"></p>
+<h2 id="数据库的修改和删除"><a href="#数据库的修改和删除" class="headerlink" title="数据库的修改和删除"></a>数据库的修改和删除</h2><p>重命名一张表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RENAME TABLE 原名 TO 新名字; </span><br><span class="line"></span><br><span class="line">ALTER TABLE 原名 RENAME 新名; </span><br><span class="line"></span><br><span class="line">ALTER TABLE 原名 RENAME TO 新名;</span><br></pre></td></tr></table></figure>
+
+<p>对一列的修改：</p>
+<p>在表中<strong>新增</strong>一列：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名字 ADD COLUMN 列名字 数据类型 约束; </span><br><span class="line">或： </span><br><span class="line">ALTER TABLE 表名字 ADD 列名字 数据类型 约束;</span><br></pre></td></tr></table></figure>
+
+<p>新增加的列，被默认放置在这张表的最右边。如果要把增加的列插入在指定位置，则需要在语句的最后使用 AFTER 关键词(<strong>“AFTER 列 1” 表示新增的列被放置在 “列 1” 的后面</strong>)。</p>
+<p>或者是first放在第一列；</p>
+<p><strong>删除：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名字 DROP COLUMN 列名字;</span><br><span class="line"></span><br><span class="line">或： ALTER TABLE 表名字 DROP 列名字;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重命名一列</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名字 CHANGE 原列名 新列名 数据类型 约束;</span><br></pre></td></tr></table></figure>
+
+<p>当<strong>原列名</strong>和<strong>新列名</strong>相同的时候，指定新的<strong>数据类型</strong>或<strong>约束</strong>，就可以用于修改数据类型或约束。需要注意的是，修改数据类型可能会导致数据丢失，所以要慎重使用。</p>
+<p><strong>改变数据类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名字 MODIFY 列名字 新数据类型;</span><br></pre></td></tr></table></figure>
+
+<p><strong>对表的内容修改</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名字 SET 列1=值1,列2=值2 WHERE 条件;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">UPDATE employee SET age=21,salary=3000 WHERE name=&#x27;Tom&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除一行的数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名字 WHERE 条件;</span><br><span class="line"></span><br><span class="line">DELETE FROM employee WHERE name=&#x27;Tom&#x27;;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://Obliviate-debug.github.io">nobor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://obliviate-debug.github.io/2023/10/26/SQL/">http://obliviate-debug.github.io/2023/10/26/SQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://Obliviate-debug.github.io" target="_blank">子非鱼</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/24/docker/" title="docker"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">docker</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">nobor</div><div class="author-info__description">随心</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Obliviate-debug"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.2.</span> <span class="toc-text">约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5SQL%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">导入SQL语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">1.4.</span> <span class="toc-text">select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BF%AE%E6%94%B9%E5%92%8C%E5%88%A0%E9%99%A4"><span class="toc-number">1.5.</span> <span class="toc-text">数据库的修改和删除</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/26/SQL/" title="SQL">SQL</a><time datetime="2023-10-26T01:33:48.000Z" title="发表于 2023-10-26 09:33:48">2023-10-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/docker/" title="docker">docker</a><time datetime="2023-10-24T15:13:55.000Z" title="发表于 2023-10-24 23:13:55">2023-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a><time datetime="2023-10-24T01:58:46.000Z" title="发表于 2023-10-24 09:58:46">2023-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/21/web%E6%B5%8B%E8%AF%95/" title="web测试">web测试</a><time datetime="2023-10-21T15:22:32.000Z" title="发表于 2023-10-21 23:22:32">2023-10-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/26/Reverse%E4%B9%8B%E8%B7%AF/" title="Reverse之路">Reverse之路</a><time datetime="2023-05-26T01:25:30.000Z" title="发表于 2023-05-26 09:25:30">2023-05-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By nobor</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
